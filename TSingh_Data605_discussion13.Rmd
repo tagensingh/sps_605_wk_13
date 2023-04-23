@@ -1,0 +1,119 @@
+---
+title: "Data 605 Discussion 13 Problem  Calculus 7.1 Q - 12"
+author: "Tage N Singh"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+
+
+--------------------------------------------------------------------------------
+
+File Locations:
+
+<a href="http://rpubs.com/tagensingh/sps-data605-discussion13">R Pubs Output</a>
+
+<a href="https://raw.githubusercontent.com/tagensingh/sps_605_wk13_discussion/main/TSingh_Data605_discussion13.Rmd">RMD on Github</a>
+
+--------------------------------------------------------------------------------
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+```
+
+--------------------------------------------------------------------------------
+
+
+
+Find the area of the region bounded by the graphs of the given equations :
+
+$y=\sqrt{x} + 1,\  y = \sqrt{2-x} + 1$
+
+**Solution : **
+
+Plotting the graphs of the 3 functions :
+
+Function 1 : $y = \sqrt{x} + 1$
+
+Function 2 : $y = \sqrt{2-x} + 1$
+
+Function 3 : $y = 1$
+
+The Boundaries are  : $0 \le x \le 2$ and $1 \le y \le 2$
+
+The Resultant Figure is :
+
+
+```{r qcalc}
+
+c1 = curve((x)^0.5 + 1, from = 0, to = 1, xlim = c(0, 3), ylim = c(0, 3), col = "blue", main = "Area Under The Curves ")
+c2 = curve(((2-x)^0.5) + 1, from = 1, to = 2, xlim = c(0, 3), ylim = c(0, 3), add = TRUE, col = "blue")
+c3 = curve(0 * x + 1, from = 0, to = 2, add = TRUE, col = "blue")
+
+polygon(c(c1$x, rev(c2$x), rev(c3$x)),c(c1$y, rev(c2$y), rev(c3$y)), col = "blue", border="blue")
+
+```
+
+
+To compute the area enclosed by the 3 curves we will integrate about $dy$ instead of the traditional $dx$ to account for the $y = 2$ line.
+
+Function 1 : $y= \sqrt{x} + 1$
+
+$\implies$ $y-1 = \sqrt{x}$
+
+$\implies$ $y-1 = \sqrt{x}$
+
+$\implies$ $x = (y-1)^{2}$
+
+
+
+Function 2 : $y = \sqrt{2-x} + 1$
+
+$\implies$ $y-1 = \sqrt{2-x}$
+
+$\implies$ $(y-1)^{2} = 2-x$
+
+$\implies$ $x = 2-(y-1)^{2}$
+
+
+Applying the integral function to the difference between the two functions
+$x = (y-1)^{2}$ and $x=2-(y-1)^{2}$ between the intervals $1 \le y \le 2$
+
+
+Computing the  the area bound by the curves using the R-Integrate function :
+
+
+```{r compute}
+
+a1 = function(y) {2 - ((y-1)^2)}
+a2 = function(y) {(y-1)^2}
+
+ax <- integrate(a1, 1,2)
+bx <- integrate(a2,1,2)
+
+
+# The Area Bounded by the 2 curves and line y = 2 is :
+
+(Area <- round((ax$value - bx$value),2))
+
+```
+
+--------------------------------------------------------------------------------
+
+**References :**
+
+https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/curve
+
+https://latexeditor.lagrida.com/
+
+https://www.geeksforgeeks.org/create-line-curves-for-specified-equations-in-r-programming-curve-function/
+
+
+
