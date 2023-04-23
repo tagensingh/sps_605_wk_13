@@ -14,9 +14,9 @@ output:
 
 File Locations:
 
-<a href="http://rpubs.com/tagensingh/sps-data605-discussion13">R Pubs Output</a>
+<a href="https://rpubs.com/tagensingh/sps-data-605-discussion-13">R Pubs Output</a>
 
-<a href="https://raw.githubusercontent.com/tagensingh/sps_605_wk13_discussion/main/TSingh_Data605_discussion13.Rmd">RMD on Github</a>
+<a href="https://raw.githubusercontent.com/tagensingh/sps_605_wk_13/main/TSingh_Data605_discussion13.Rmd">RMD on Github</a>
 
 --------------------------------------------------------------------------------
 
